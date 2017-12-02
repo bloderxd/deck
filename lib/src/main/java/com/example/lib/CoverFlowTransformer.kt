@@ -2,10 +2,6 @@ package com.example.lib
 
 import android.support.v4.view.ViewPager
 import android.view.View
-import android.support.v4.view.ViewCompat.setAlpha
-import android.support.v4.view.ViewCompat.setScaleY
-import android.support.v4.view.ViewCompat.setScaleX
-
 
 
 /**
@@ -18,31 +14,6 @@ class CoverFlowTransformer : ViewPager.PageTransformer {
     private var MIN_ALPHA = 0.5f
     private var scale = .05f
     private var paddingFactor: Float = 0.08f
-
-    fun minScale(scale: Float) : CoverFlowTransformer {
-        SCALE_MIN = scale
-        return this
-    }
-
-    fun maxScale(scale: Float) : CoverFlowTransformer {
-        SCALE_MAX = scale
-        return this
-    }
-
-    fun minAlpha(alpha: Float) : CoverFlowTransformer {
-        MIN_ALPHA = alpha
-        return this
-    }
-
-    fun scale(scale: Float) : CoverFlowTransformer {
-        this.scale = scale
-        return this
-    }
-
-    fun paddingFactor(padding: Float) : CoverFlowTransformer {
-        this.paddingFactor = padding
-        return this
-    }
 
     override fun transformPage(page: View, position: Float) {
         val realPosition = position - paddingFactor
@@ -58,8 +29,4 @@ class CoverFlowTransformer : ViewPager.PageTransformer {
     private fun getFloat(value: Float, minValue: Float, maxValue: Float): Float {
         return Math.min(maxValue, Math.max(minValue, value))
     }
-}
-
-fun Deck.with(reverseDrawingOrder: Boolean = true, init: CoverFlowTransformer.() -> CoverFlowTransformer) {
-    this.setPageTransformer(reverseDrawingOrder, CoverFlowTransformer().init())
 }
