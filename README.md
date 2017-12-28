@@ -25,9 +25,20 @@ then you just need to set deck default padding
 private val deckPager by lazy { activity.findViewById<Deck>(R.id.deck_pager) }
 
 private fun initDeck() {
-    deckPager.useDefaultPadding(activity)
+    deckPager.setDefaultPadding(activity)
 }
+```
 
+or set padding based on percentage of the screen width
+
+```kotlin
+deckPager.setPercentagePadding(activity)
+```
+
+or set padding based on dp value
+
+```kotlin
+deckPager.setDpPadding(activity)
 ```
 
 ##### Remember you can set all other view pager properties with deck

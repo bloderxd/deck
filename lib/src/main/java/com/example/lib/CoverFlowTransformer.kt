@@ -7,17 +7,18 @@ import android.view.View
 /**
  * Created by bloder on 25/08/17.
  */
+private const val SCALE_MIN = .3f
+private const val SCALE_MAX = 1f
+private const val MIN_ALPHA = .5f
+private const val SCALE = .05f
+
 class CoverFlowTransformer : ViewPager.PageTransformer {
 
-    private var SCALE_MIN = 0.3f
-    private var SCALE_MAX = 1f
-    private var MIN_ALPHA = 0.5f
-    private var scale = .05f
-    private var paddingFactor: Float = 0.08f
+    var paddingFactor: Float = 0.08f
 
     override fun transformPage(page: View, position: Float) {
         val realPosition = position - paddingFactor
-        val realScale = getFloat(1 - Math.abs(realPosition * scale), SCALE_MIN, SCALE_MAX)
+        val realScale = getFloat(1 - Math.abs(realPosition * SCALE), SCALE_MIN, SCALE_MAX)
         page.scaleX = realScale
         page.scaleY = realScale
         if (realPosition != 0f) {
