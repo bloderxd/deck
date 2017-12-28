@@ -31,14 +31,22 @@ private fun initDeck() {
 
 or set padding based on percentage of the screen width
 
-```kotlin
-deckPager.setPercentagePadding(activity)
+```
+// in kotlin
+deckPager.setPercentagePadding(activity, 8)
+
+// in XML
+app:padding_percentage="8"
 ```
 
 or set padding based on dp value
 
-```kotlin
-deckPager.setDpPadding(activity)
+```
+// in kotlin
+deckPager.setDpPadding(activity, 16)
+
+// in XML
+app:padding_dp="16dp"
 ```
 
 ##### Remember you can set all other view pager properties with deck
