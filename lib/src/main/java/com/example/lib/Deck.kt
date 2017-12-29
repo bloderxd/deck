@@ -17,7 +17,9 @@ class Deck : ViewPager {
 
     private val pageTransformer = CoverFlowTransformer()
 
-    constructor(context: Context) : super(context)
+    constructor(context: Context) : super(context) {
+        setPercentagePadding(context, DEFAULT_PERCENTAGE_PADDING)
+    }
 
     constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet) {
         val typedArray: TypedArray = context.obtainStyledAttributes(attributeSet, R.styleable.Deck)
@@ -30,6 +32,11 @@ class Deck : ViewPager {
             initProperties(context, dipPaddingXmlInPixel.toFloat())
         }
         typedArray.recycle()
+
+        // set the default padding if no properties from XML
+        if (percentagePaddingXml == Integer.MAX_VALUE && dipPaddingXmlInPixel == Integer.MAX_VALUE) {
+            setPercentagePadding(context, DEFAULT_PERCENTAGE_PADDING)
+        }
     }
 
     init {
@@ -38,13 +45,6 @@ class Deck : ViewPager {
 
     private fun initView() {
         setPageTransformer(true, pageTransformer)
-    }
-
-    /**
-     * Set left and right padding with default value
-     */
-    fun setDefaultPadding(context: Context) {
-        setPercentagePadding(context, DEFAULT_PERCENTAGE_PADDING)
     }
 
     /**
