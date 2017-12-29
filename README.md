@@ -18,23 +18,42 @@ First of all you need to declare it in your layout xml file
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 ```
-
-then you just need to set deck default padding
+Then you can set the padding(Optional)
 
 ```kotlin
 private val deckPager by lazy { activity.findViewById<Deck>(R.id.deck_pager) }
+```
 
-private fun initDeck() {
-    deckPager.useDefaultPadding(activity)
-}
+Set padding based on percentage of the screen width
 
+```kotlin
+deckPager.setPercentagePadding(activity, 8)
+```
+
+or set padding based on dp value
+
+```kotlin
+deckPager.setDpPadding(activity, 16)
 ```
 
 ##### Remember you can set all other view pager properties with deck
 
+# Deck properties
+
+These are all properties supported in deck's xml
+
+```xml
+<com.example.lib.Deck
+        android:id="@+id/deck_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:padding_percentage="8"
+        app:padding_dp="16dp"/>
+```
+
 # Import
 
-It's easy import deck in your project, first you need add jit pack maven reference in your project
+Add JitPack maven repository reference in your project
 
 ```groovy
 repositories {
@@ -42,7 +61,7 @@ repositories {
 }
 ```
 
-then add deck referente in your gradle dependencies
+then add deck reference in your gradle dependencies
 
 ##### Gradle
 

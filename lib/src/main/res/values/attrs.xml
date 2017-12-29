@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Deck">
+        <attr name="padding_percentage" format="integer"/>
+        <attr name="padding_dp" format="dimension"/>
+    </declare-styleable>
+</resources>

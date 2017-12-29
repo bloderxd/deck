@@ -16,6 +16,5 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         deckPager.offscreenPageLimit = 5
         deckPager.adapter = DeckAdapter(this)
-        deckPager.useDefaultPadding(this)
     }
 }
