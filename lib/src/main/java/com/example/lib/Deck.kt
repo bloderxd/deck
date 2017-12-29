@@ -57,9 +57,7 @@ class Deck : ViewPager {
             percentage < 0 -> throw IllegalArgumentException("Percentage can't be lower than 0")
             percentage >= 50 -> throw IllegalArgumentException("Your layout will not visible if the percentage equals or higher than 50")
             else -> {
-                val metrics = DisplayMetrics()
-                (context as Activity).windowManager.defaultDisplay.getMetrics(metrics)
-                val padding = metrics.widthPixels * percentage / 100f
+                val padding = screenWidth(context) * percentage / 100f
                 initProperties(context, padding)
             }
         }
@@ -83,8 +81,12 @@ class Deck : ViewPager {
         clipToPadding = false
         pageMargin = 0
 
+        pageTransformer.paddingFactor = padding / screenWidth(context)
+    }
+
+    private fun screenWidth(context: Context): Int {
         val metrics = DisplayMetrics()
         (context as Activity).windowManager.defaultDisplay.getMetrics(metrics)
-        pageTransformer.paddingFactor = padding / metrics.widthPixels
+        return metrics.widthPixels
     }
 }
