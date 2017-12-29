@@ -55,7 +55,7 @@ class Deck : ViewPager {
         when {
             percentage == 0 -> initProperties(context, 0f)
             percentage < 0 -> throw IllegalArgumentException("Percentage can't be lower than 0")
-            percentage > 100 -> throw IllegalArgumentException("Percentage can't be higher than 100")
+            percentage >= 50 -> throw IllegalArgumentException("Your layout will not visible if the percentage equals or higher than 50")
             else -> {
                 val metrics = DisplayMetrics()
                 (context as Activity).windowManager.defaultDisplay.getMetrics(metrics)
